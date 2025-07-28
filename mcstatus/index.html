@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoStatus | Minecraft Status Server</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Language Toggle Button -->
+    <button class="language-toggle" id="languageToggle">
+        <span class="flag">🇪🇸</span>
+        <span class="lang-text">ES</span>
+    </button>
+
+    <div class="app">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title" data-i18n="title">EchoStatus</h1>
+                <p class="subtitle" data-i18n="subtitle">Consulta información de servidores de Minecraft</p>
+            </div>
+        </header>
+
+        <main class="main">
+            <section class="search-section">
+                <div class="search-container">
+                    <form class="search-form" id="serverForm">
+                        <div class="input-wrapper">
+                            <input 
+                                type="text" 
+                                id="serverInput" 
+                                class="server-input" 
+                                data-i18n-placeholder="inputPlaceholder"
+                                placeholder="hypixel.net"
+                                required
+                            >
+                            <button type="submit" class="search-btn" id="searchBtn">
+                                <span class="btn-content">
+                                    <span class="btn-text" data-i18n="searchButton">Consultar</span>
+                                    <span class="btn-loading">
+                                        <div class="spinner"></div>
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="examples">
+                        <span class="examples-label" data-i18n="tryWith">Prueba con:</span>
+                        <div class="example-servers">
+                            <button class="example-server" data-server="hypixel.net">Hypixel</button>
+                            <button class="example-server" data-server="mineplex.com">Mineplex</button>
+                            <button class="example-server" data-server="play.cubecraft.net">CubeCraft</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="server-overview" id="serverOverview">
+                    <!-- Overview se insertará aquí -->
+                </div>
+                
+                <div class="server-details" id="serverDetails">
+                    <!-- Detalles se insertarán aquí -->
+                </div>
+            </section>
+
+            <section class="error-section" id="errorSection" style="display: none;">
+                <div class="error-container">
+                    <div class="error-icon">⚠</div>
+                    <h3 class="error-title" data-i18n="errorTitle">No se pudo conectar</h3>
+                    <p class="error-message" id="errorMessage"></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts/i18n.js"></script>
+    <script src="scripts/minecraft-colors.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
