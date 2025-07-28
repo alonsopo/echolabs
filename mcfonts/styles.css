@@ -425,7 +425,7 @@ body {
 
 @font-face {
   font-family: "Minecraft";
-  src: url("./fonts/Minecraft.ttf") format("truetype");
+  src: url("/assets/fonts/MinecraftRegular-Bmg3.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
