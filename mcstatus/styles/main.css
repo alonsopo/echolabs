@@ -23,7 +23,7 @@
 /* Fuente de Minecraft */
 @font-face {
   font-family: "Minecraft";
-  src: url("../assets/fonts/MinecraftRegular-Bmg3.otf") format("truetype"), url("../assets/fonts/Minecraft.otf")
+  src: url("/mcstatus/assets/fonts/MinecraftRegular-Bmg3.otf") format("truetype"), url("../assets/fonts/Minecraft.otf")
     format("opentype"), url("../assets/fonts/minecraft.woff2") format("woff2"), url("../assets/fonts/minecraft.woff")
     format("woff");
   font-weight: normal;
@@ -33,7 +33,7 @@
 
 @font-face {
   font-family: "Minecraft-bold";
-  src: url(../assets/fonts/MinecraftBold-nMK1.otf);
+  src: url(/mcstatus/assets/fonts/MinecraftBold-nMK1.otf);
 }
 
 * {
@@ -108,7 +108,7 @@ body {
       rgba(10, 10, 10, 0.85) 80%,
       rgba(10, 10, 10, 0.95) 90%,
       var(--bg-primary) 100%
-    ), url("../assets/background-image.webp");
+    ), url("/mcstatus/assets/background-image.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -454,7 +454,7 @@ body {
 
 /* MOTD Banner Styles - Respeta alineación original */
 .motd-banner {
-  background-image: url(../assets/server_list_background.jpg);
+  background-image: url(/mcstatus/assets/server_list_background.jpg);
   border: 2px solid #404040;
   border-radius: 12px;
   padding: 24px 32px;
