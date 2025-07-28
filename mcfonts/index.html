@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoFonts - Minecraft Tools</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="./echocode.ico" type="image/ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.2/jscolor.min.js"></script>
+    <meta property="og:title" content="EchoFonts - Minecraft Tools">
+    <meta property="og:description" content="Crea degradados. Y mas herramientas!">
+    <meta property="og:url" content="https://alonsopo.github.io/echofonts/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="EchoFonts - Minecraft Tools">
+    <meta name="twitter:description" content="Crea degradados. Y mas herramientas!">
+</head>
+<body class="dark">
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="./echocode.ico" alt="Logo" class="logo">
+                <h2>EchoFonts</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-page="gradient-generator">
+                        <i class="fas fa-palette"></i>
+                        <span>Generador de Degradados</span>
+                    </li>
+                    <li data-page="small-caps">
+                        <i class="fas fa-font"></i>
+                        <span>Small Caps</span>
+                    </li>
+                    <li data-page="emoji-selector">
+                        <i class="fas fa-smile"></i>
+                        <span>Emojis & Símbolos</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <span>Modo Claro</span>
+                </button>
+            </div>
+        </aside>
+        <main class="main-content">
+            <section id="gradient-generator" class="page active">
+                <div class="page-header">
+                    <h1>Generador de Degradados</h1>
+                    <p>Crea hermosos degradados de colores para tus textos en Minecraft</p>
+                </div>
+                <div class="gradient-layout">
+                    <div class="card gradient-layout-full">
+                        <div class="card-header">
+                            <h2>Resultado</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="result-container">
+                                <textarea id="output-text" class="output-field" readonly></textarea>
+                                <div id="error-message" class="error-message">¡El texto es demasiado largo para este formato!</div>
+                                <button id="copy-button" class="btn btn-primary">
+                                    <i class="fas fa-copy"></i> Copiar al portapapeles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Texto</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input type="text" id="gradient-text" class="input-field" placeholder="Escribe tu texto aquí..." value="Minecraft">
+                            </div>
+                            <div class="preview-container">
+                                <h3>Vista Previa</h3>
+                                <div id="gradient-preview" class="preview-box minecraft-text"></div>
+                            </div>
+                            <div class="format-selector">
+                                <label for="output-format">Formato de salida:</label>
+                                <select id="output-format" class="select-field"></select>
+                            </div>
+                            <div class="text-formatting">
+                                <div class="checkbox-grid">
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="bold" class="checkbox">
+                                        <label for="bold" class="checkbox-label">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="checkbox-text">Negrita</span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="italic" class="checkbox">
+                                        <label for="italic" class="checkbox-label">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="checkbox-text">Cursiva</span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="underline" class="checkbox">
+                                        <label for="underline" class="checkbox-label">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="checkbox-text">Subrayado</span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="strike" class="checkbox">
+                                        <label for="strike" class="checkbox-label">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="checkbox-text">Tachado</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Colores</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="color-controls">
+                                <div class="input-group">
+                                    <label for="num-colors">Número de colores:</label>
+                                    <input type="number" id="num-colors" min="2" max="10" value="2" class="input-field">
+                                </div>
+                                <button id="add-color" class="btn btn-secondary">
+                                    <i class="fas fa-plus"></i> Añadir Color
+                                </button>
+                            </div>
+                            <div id="color-list" class="color-list"></div>
+                            <div class="presets">
+                                <h3>Presets</h3>
+                                <div class="preset-grid">
+                                    <button class="preset-btn" data-preset="rainbow">Arcoíris</button>
+                                    <button class="preset-btn" data-preset="fire">Fuego</button>
+                                    <button class="preset-btn" data-preset="water">Agua</button>
+                                    <button class="preset-btn" data-preset="forest">Bosque</button>
+                                    <button class="preset-btn" data-preset="sunset">Atardecer</button>
+                                    <button class="preset-btn" data-preset="neon">Neón</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="small-caps" class="page">
+                <div class="page-header">
+                    <h1>Convertidor de Small Caps</h1>
+                    <p>Convierte tu texto a small caps para Minecraft</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Texto</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" id="small-caps-input" class="input-field" placeholder="Escribe tu texto aquí..." value="Minecraft">
+                        </div>
+                        <div class="result-container">
+                            <textarea id="small-caps-output" class="output-field" readonly></textarea>
+                            <button id="small-caps-copy" class="btn btn-primary">
+                                <i class="fas fa-copy"></i> Copiar al portapapeles
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="emoji-selector" class="page">
+                <div class="page-header">
+                    <h1>Selector de Emojis y Símbolos</h1>
+                    <p>Añade emojis y símbolos compatibles con Minecraft</p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Emojis y Símbolos</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="emoji-container">
+                            <div id="loading-text">Cargando emojis...</div>
+                            <div id="emoji-grid" class="emoji-grid"></div>
+                        </div>
+                        <div class="recent-emojis">
+                            <h3>Usados recientemente</h3>
+                            <div id="recent-emoji-grid" class="emoji-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer class="app-footer">
+                <p>EchoFonts &copy; <span id="current-year"></span></p>
+                <p>Creditos por la idea a <a href="https://discord.gg/nbCZuZPu7w" target="_blank">Inside Studio</a></p>
+                <div class="social-links">
+                    <a href="https://github.com/alonsopo" target="_blank" class="social-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle toast-icon"></i>
+            <div class="toast-message">¡Copiado al portapapeles!</div>
+        </div>
+        <div class="toast-progress"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
